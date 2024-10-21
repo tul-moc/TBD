@@ -1,0 +1,65 @@
+Víte, co má společného první mobil a současný smartphone? Mnoho ne
+Počet článků: 145121
+Průměrný počet fotek na článek: 6.1148765512916805
+Počet článků s více než 100 komentáři: 14283
+Kategorie: ['Magazíny', 'Bonusweb'], Počet článků: 613
+Kategorie: ['Magazíny', 'Technet'], Počet článků: 322
+Kategorie: ['Sport', 'Fotbal', 'Poháry'], Počet článků: 338
+Kategorie: ['Zprávy', 'Volby'], Počet článků: 285
+Kategorie: ['Zprávy', 'Kraje', 'Brno'], Počet článků: 515
+Kategorie: ['Magazíny', 'OnaDNES'], Počet článků: 322
+Kategorie: ['Sport', 'Atletika'], Počet článků: 117
+Kategorie: ['Sport', 'MMA'], Počet článků: 83
+Kategorie: ['Magazíny', 'OnaDNES', 'Móda'], Počet článků: 106
+Kategorie: ['Zprávy', 'Kraje', 'Praha a střední Čechy'], Počet článků: 687
+Kategorie: ['Zprávy', 'Revue'], Počet článků: 698
+Kategorie: ['Sport', 'Ostatní'], Počet článků: 1489
+Kategorie: ['Sport', 'Hokej', 'Extraliga'], Počet článků: 560
+Kategorie: ['Zprávy', 'Kraje', 'Hradec Králové'], Počet článků: 316
+Kategorie: ['Recepty'], Počet článků: 22
+Kategorie: ['Sport', 'Fotbal', 'Chance Liga'], Počet článků: 737
+Kategorie: ['Zprávy', 'Domácí'], Počet článků: 2327
+Kategorie: ['Magazíny', 'Hobby'], Počet článků: 270
+Kategorie: ['Sport', 'Hokej', 'Reprezentace'], Počet článků: 215
+Kategorie: ['Magazíny', 'Xman'], Počet článků: 198
+Kategorie: ['Sport', 'Tenis'], Počet článků: 401
+Kategorie: ['Sport', 'Basket'], Počet článků: 576
+Kategorie: ['Magazíny', 'Auto'], Počet článků: 398
+Kategorie: ['Sport', 'Ostatní', 'Biatlon'], Počet článků: 69
+Kategorie: ['Sport', 'Fotbal', 'Domácí soutěže'], Počet článků: 217
+Kategorie: ['Sport', 'Fotbal', 'ME do 21 let'], Počet článků: 3
+Kategorie: ['Zprávy', 'Kraje', 'Jihlava'], Počet článků: 334
+Kategorie: ['Zprávy', 'Kraje', 'České Budějovice'], Počet článků: 400
+Kategorie: ['Magazíny', 'Jen pro ženy'], Počet článků: 193
+Kategorie: ['Zprávy', 'Kultura'], Počet článků: 815
+Kategorie: ['Sport', 'Fotbal', 'Reprezentace', 'MS 2022'], Počet článků: 435
+Kategorie: ['Zprávy', 'Zahraničí'], Počet článků: 2746
+Kategorie: ['Zprávy', 'Kraje', 'Karlovy Vary'], Počet článků: 346
+Kategorie: ['Sport', 'Ostatní', 'Olympismus'], Počet článků: 23
+Kategorie: ['Zprávy', 'Finance'], Počet článků: 217
+Kategorie: ['Blog', 'Ostatní'], Počet článků: 1
+Kategorie: ['Zprávy', 'Kraje', 'Ostrava'], Počet článků: 493
+Kategorie: ['Sport', 'Hokej', 'NHL'], Počet článků: 290
+Kategorie: ['Sport', 'Fotbal', 'Reprezentace'], Počet článků: 162
+Kategorie: ['Zprávy', 'Kraje', 'Liberec'], Počet článků: 303
+Kategorie: ['Magazíny', 'Cestování'], Počet článků: 214
+Kategorie: ['Magazíny', 'OnaDNES', 'Zdraví'], Počet článků: 264
+Kategorie: ['Sport', 'Fotbal'], Počet článků: 320
+Kategorie: ['Sport', 'F1'], Počet článků: 121
+Kategorie: ['Zprávy', 'Ekonomika'], Počet článků: 1589
+Kategorie: ['Magazíny', 'Mobil'], Počet článků: 277
+Kategorie: ['Sport', 'Hokej', 'Reprezentace', 'MS 2023'], Počet článků: 2
+Kategorie: ['Sport', 'Fotbal', 'Reprezentace', 'Euro 2024'], Počet článků: 5
+Kategorie: ['Magazíny', 'Jen pro holky'], Počet článků: 136
+Kategorie: ['Zprávy', 'Krimi'], Počet článků: 2
+Kategorie: ['Zprávy', 'Kraje', 'Zlín'], Počet článků: 389
+Kategorie: [], Počet článků: 2435
+Kategorie: ['Magazíny', 'Cestování', 'Lyže'], Počet článků: 17
+Kategorie: ['Sport', 'Cyklistika'], Počet článků: 240
+Kategorie: ['Magazíny', 'Cestování', 'Výlety'], Počet článků: 1
+Kategorie: ['Zprávy', 'Kraje', 'Ústí nad Labem'], Počet článků: 316
+Kategorie: ['Magazíny', 'Bydlení'], Počet článků: 209
+Kategorie: ['Zprávy', 'Kraje', 'Plzeň'], Počet článků: 352
+Kategorie: ['Zprávy', 'Kraje', 'Olomouc'], Počet článků: 420
+Kategorie: ['Zprávy', 'Kraje', 'Pardubice'], Počet článků: 344
+Kategorie: ['Sport', 'Hokej'], Počet článků: 262
