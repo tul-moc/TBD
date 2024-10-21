@@ -12,8 +12,6 @@ def process_article_content(article):
 def get_eight_most_used_words(articles):
     words = []
     for article in articles:
-        if article['title'] is not None:
-            words.extend(process_article_content(article['title'].split()))
         if article['content'] is not None:
             words.extend(process_article_content(article['content'].split()))
     
@@ -25,8 +23,6 @@ def get_eight_most_used_words(articles):
 def get_three_articles_with_most_of_covid_mentions(articles):
     for article in articles:
         article['covid_count'] = 0
-        if article['title'] is not None:
-            article['covid_count'] += article['title'].lower().count('covid-19')
         if article['content'] is not None:
             article['covid_count'] += article['content'].lower().count('covid-19')
     
@@ -38,8 +34,6 @@ def get_three_articles_with_most_of_covid_mentions(articles):
 def get_articles_lowest_and_highest_word_count(articles):
     for article in articles:
         article['word_count'] = 0
-        if article['title'] is not None:
-            article['word_count'] += len(article['title'].split())
         if article['content'] is not None:
             article['word_count'] = len(article['content'].split())
     
@@ -50,8 +44,6 @@ def get_articles_lowest_and_highest_word_count(articles):
 def get_articles_avarage_word_length(articles):
     words = []
     for article in articles:
-        if article['title'] is not None:
-            words.extend(article['title'].split())
         if article['content'] is not None:
             words.extend(article['content'].split())
     
@@ -60,25 +52,20 @@ def get_articles_avarage_word_length(articles):
     print(f"Průměrná délka slova v článcích je {avarage_word_length} znaků")
 
 def get_articles_month_with_lowest_and_highest_articles(articles):
-    # Inicializace Counteru pro měsíce
     month_counter = Counter()
-    
     for article in articles:
         if article['formatted_created_date'] is not None:
-            # Převedení řetězce na objekt datetime
             article_date = datetime.strptime(article['formatted_created_date'], '%Y-%m-%dT%H:%M:%S')
-            # Přidání měsíce a roku do counteru
             month_counter[f"{article_date.year}-{article_date.month}"] += 1
 
-    # Nalezení měsíce s nejvíce a nejméně články
-    most_common_month = month_counter.most_common(1)[0]  # Nejčastější
-    least_common_month = month_counter.most_common()[-1]  # Nejméně častý
+    most_common_month = month_counter.most_common(1)[0]
+    least_common_month = month_counter.most_common()[-1]
     
     print(f"Měsíc s nejvíce články: {most_common_month[0]} - Počet článků: {most_common_month[1]}")
     print(f"Měsíc s nejméně články: {least_common_month[0]} - Počet článků: {least_common_month[1]}")
 
 def process():
-    with open('fixed.json', 'r', encoding='utf-8') as file:
+    with open('articles-small.json', 'r', encoding='utf-8') as file:
         articles = json.load(file)
 
     get_eight_most_used_words(articles)

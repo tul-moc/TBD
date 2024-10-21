@@ -60,8 +60,6 @@ def get_five_most_used_words_in_2021(data):
 
     words = []
     for article in articles_2021:
-        if article['title'] is not None:
-            words.extend(article['title'].split())
         if article['content'] is not None:
             words.extend(article['content'].split())
     
@@ -82,14 +80,12 @@ def get_articles_total_words_count(data):
     for article in data:
         if article['content'] is not None:
             sum += len(article['content'].split())
-        if article['title'] is not None:
-            sum += len(article['title'].split())
 
     print(f"Celkový počet slov: {sum}")
 
 
 def process():
-    with open('fixed.json', 'r', encoding='utf-8') as file:
+    with open('articles-small.json', 'r', encoding='utf-8') as file:
         articles = json.load(file)
 
     get_articles_count(articles)
