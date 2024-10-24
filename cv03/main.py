@@ -77,13 +77,13 @@ def plot_article_category_distribution(articles):
 
 # Vykreslete histogram pro počet slov v článcích.
 def plot_article_word_count_histogram(articles):
-    word_counts = []
+    words = []
     for article in articles:
         if article['content'] is not None:
-            word_counts.append(len(article['content'].split()))
+            words.append(len(article['content'].split()))
 
     plt.figure(figsize=(10, 6))
-    plt.hist(word_counts, bins=10, color='skyblue')
+    plt.hist(words, color='skyblue')
     plt.title("Histogram počtu slov v článcích")
     plt.xlabel("Počet slov")
     plt.ylabel("Počet článků")
@@ -93,50 +93,53 @@ def plot_article_word_count_histogram(articles):
 
 # Vykreslete histogram pro délku slov v článcích.
 def plot_article_word_length_histogram(articles):
-    word_lengths = []
+    word_length_counter = Counter()
     for article in articles:
-        if article['content'] is not None:
-            for word in article['content'].split():
-                word_lengths.append(len(word))
+        if article.get('content'):
+            word_lengths = [len(word) for word in article['content'].split()]
+            word_length_counter.update(word_lengths)
+
+    lengths, counts = zip(*word_length_counter.items())
 
     plt.figure(figsize=(10, 6))
-    plt.hist(word_lengths, bins=10, color='skyblue')
+    plt.bar(lengths, counts, color='skyblue', edgecolor='black')
     plt.title("Histogram délky slov v článcích")
-    plt.xlabel("Délka slova")
-    plt.ylabel("Počet slov")
+    plt.xlabel("Počet slova")
+    plt.ylabel("Délka slov")
     plt.grid(True)
     plt.tight_layout()
     plt.show()
+
 
 # Vykreslete časovou osu zobrazující výskyt slova "koronavirus" v názvu článku a přidejte druhou křivku pro výraz "vakcína".
 def plot_word_occurrence_in_titles(articles):
     data = {
         'dates': [],
-        'coronavirus_counts': [],
-        'vaccine_counts': []
+        'coronavirus_count': [],
+        'vaccine_count': []
     }
 
     for article in articles:
         if article['formatted_created_date'] is not None and article['title'] is not None:
             data['dates'].append(datetime.strptime(article['formatted_created_date'], '%Y-%m-%dT%H:%M:%S'))
-            data['coronavirus_counts'].append(article['title'].lower().count('koronavirus'))
-            data['vaccine_counts'].append(article['title'].lower().count('vakcína'))
+            data['coronavirus_count'].append(article['title'].lower().count('koronavirus'))
+            data['vaccine_count'].append(article['title'].lower().count('vakcína'))
 
     df = pd.DataFrame(data)
     df['month'] = df['dates'].dt.to_period('M')
-    monthly_counts = df.groupby('month').sum()
+    monthly_counts = df.groupby('month')[['coronavirus_count', 'vaccine_count']].sum()
 
     plt.figure(figsize=(10, 6))
     plt.plot(monthly_counts.index.to_timestamp(), monthly_counts['coronavirus_count'], label='Koronavirus', marker='o')
-    plt.plot(monthly_counts.index.to_timestamp(), monthly_counts['vaccine_count'], label='Vakcína', marker='o', color='orange')
+    plt.plot(monthly_counts.index.to_timestamp(), monthly_counts['vaccine_count'], label='Vakcína', marker='o', color='orange')    
     plt.title("Výskyt slov v názvu článku v čase")
-    plt.xlabel("Datum publikace")
-    plt.ylabel("Počet výskytů")
+    plt.xlabel("Počet výskytů")
+    plt.ylabel("Datum publikace")
     plt.legend()
     plt.grid(True)
-    plt.xticks(rotation=45)
     plt.tight_layout()
     plt.show()
+
 
 # Vykreslete histogram pro počet článků v v jednotlivých dnech týdne.
 def plot_article_count_by_weekday(articles):
@@ -160,13 +163,13 @@ def process():
     with open('articles-small.json', 'r', encoding='utf-8') as file:
         articles = json.load(file)
 
-    #plot_article_growth_in_time(articles)
-    #plot_article_count_by_year(articles)
-    #plot_article_length_vs_comments(articles)
+    plot_article_growth_in_time(articles)
+    plot_article_count_by_year(articles)
+    plot_article_length_vs_comments(articles)
     #plot_article_category_distribution(articles)
     #plot_article_word_count_histogram(articles)
-    #plot_article_word_length_histogram(articles) #dont work
-    #plot_word_occurrence_in_titles(articles) #dont work
+    #plot_article_word_length_histogram(articles)
+    #plot_word_occurrence_in_titles(articles)
     #plot_article_count_by_weekday(articles)
 
 if __name__ == '__main__':

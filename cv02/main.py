@@ -10,17 +10,20 @@ def get_articles_date(data):
     return dates
 
 def get_articles_count(data):
-        print(f'Počet článků: {len(data)}')
+    print(f'Počet článků: {len(data)}')
 
 def get_duplicated_articles_count(data):
-    articles_titles = [article['title'] for article in data]
+    articles_titles = []
+    for article in data:
+        if article['title'] is not None:
+            articles_titles.append(article['title'])
+
     articles_titles_counter = Counter(articles_titles)
     duplicated_articles = {title: count for title, count in articles_titles_counter.items() if count > 1}
     print(f'Počet duplicitních článků: {len(duplicated_articles)}')
 
 def get_oldest_article_date(data):
     date = get_articles_date(data)
-
     oldest_article = min(date)
     print(f'Nejstarší datum: {oldest_article}')
 
