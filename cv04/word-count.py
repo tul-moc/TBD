@@ -1,14 +1,31 @@
 from pyspark import SparkConf, SparkContext
+import re
+import json
 
-conf = SparkConf().setMaster("spark://fa367db42f31:7077").setAppName("WordCount")
-# conf = SparkConf().setMaster("local").setAppName("WordCount")
+conf = SparkConf().setMaster("local").setAppName("WordCount")
 sc = SparkContext(conf = conf)
 
-input = sc.textFile("/files/book.txt")
-words = input.flatMap(lambda x: x.split())
-wordCounts = words.countByValue()
+def normalizeWords(text):
+    return re.findall(r'\b\w+\b', text.lower())
 
-for word, count in wordCounts.items():
-    cleanWord = word.encode('ascii', 'ignore')
-    if (cleanWord):
-        print(cleanWord.decode() + " " + str(count))
+input = sc.textFile("/files/book.txt")
+words = input.flatMap(normalizeWords)
+wordCounts = words.map(lambda x: (x, 1)).reduceByKey(lambda x, y: x + y)
+sortedWordCounts = wordCounts.sortBy(lambda x: x[1], ascending=False)
+top20Words = sortedWordCounts.take(20)
+
+for word, count in top20Words:
+    print(f"{word} {count}")
+
+
+with open('articles-small.json', 'r', encoding='utf-8') as file:
+    articles = json.load(file)
+
+words = sc.parallelize([article['content'] for article in articles])
+filteredWords = words.flatMap(normalizeWords).filter(lambda x: len(x) >= 6)
+wordCounts = filteredWords.map(lambda x: (x, 1)).reduceByKey(lambda x, y: x + y)
+sortedWordCounts = wordCounts.sortBy(lambda x: x[1], ascending=False)
+top20Words = sortedWordCounts.take(20)
+
+for word, count in top20Words:
+    print(f"{word} {count}")

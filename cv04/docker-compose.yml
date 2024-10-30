@@ -2,6 +2,7 @@ version: '2'
 
 services:
   spark:
+    container_name: spark-master
     image: docker.io/bitnami/spark:3
     environment:
       - SPARK_MODE=master

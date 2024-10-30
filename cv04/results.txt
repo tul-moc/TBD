@@ -1,0 +1,56 @@
+I have no name!@f3451baaa075:/files$ spark-submit min-temperatures.py
+24/10/30 20:28:02 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+ITE00100554     32.30C
+EZE00100082     32.30C
+
+I have no name!@f3451baaa075:/files$ spark-submit --driver-memory 4g --executor-memory 4g word-count.py
+24/10/30 19:49:53 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+you 1878
+to 1828
+your 1420
+the 1292
+a 1191
+of 970
+and 934
+that 747
+it 649
+in 616
+is 560
+for 537
+on 428
+are 424
+if 411
+s 391
+i 387
+business 383
+can 376
+be 369
+24/10/30 19:50:07 WARN TaskSetManager: Stage 2 contains a task of very large size (423738 KiB). The maximum recommended task size is 1000 KiB.
+jejich 55910
+protože 52972
+například 47160
+letech 35533
+procent 35049
+poslední 34243
+kterou 32649
+mluvčí 31758
+několik 29217
+všechny 28577
+utkání 28469
+dalších 26843
+společnosti 25905
+milionů 25815
+uvedla 25433
+nakonec 25310
+zároveň 25267
+zhruba 25203
+připojte 25199
+získejte 25191
+
+I have no name!@f3451baaa075:/files$ spark-submit ratings-counter.py
+24/10/30 20:28:20 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+1 6110
+2 11370
+3 27145
+4 34174
+5 21201
