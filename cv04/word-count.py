@@ -17,7 +17,7 @@ top20Words = sortedWordCounts.take(20)
 for word, count in top20Words:
     print(f"{word} {count}")
 
-
+# Bonus
 with open('articles-small.json', 'r', encoding='utf-8') as file:
     articles = json.load(file)
 
