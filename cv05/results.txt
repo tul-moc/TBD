@@ -27,6 +27,7 @@ I have no name!@0dae78e39780:/files$ spark-submit spark-sql-cv.py
 only showing top 20 rows
 
 
+
 I have no name!@0dae78e39780:/files$ spark-submit total-spent-by-customer-dataframes.py
 24/11/06 16:12:19 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 +-----------+-----------+
@@ -56,6 +57,7 @@ I have no name!@0dae78e39780:/files$ spark-submit total-spent-by-customer-datafr
 only showing top 20 rows
 
 
+
 I have no name!@0dae78e39780:/files$ spark-submit most-obscure-superheroes.py
 24/11/06 16:52:08 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 +--------------------+-----------+
@@ -81,5 +83,62 @@ I have no name!@0dae78e39780:/files$ spark-submit most-obscure-superheroes.py
 |             SLAYER/|          1|
 |   MARLOPOLIS, EDGAR|          1|
 |        COOPER, TERI|          1|
++--------------------+-----------+
+only showing top 20 rows
+
+
+
+24/11/06 17:49:47 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Hrdinové s jedním propojením (pokud považujeme 1 za minimum):
++--------------------+-----------+
+|name                |connections|
++--------------------+-----------+
+|NIMROD              |1          |
+|GOOM                |1          |
+|MARAUDER II         |1          |
+|SAJA                |1          |
+|HOUSTON, LT. COMMAND|1          |
+|FIREBOLT            |1          |
+|SPARROW BEAR, MELLIS|1          |
+|MOTH/               |1          |
+|SLAYER/             |1          |
+|MASTER OF VENGEANCE |1          |
+|KURLYCHEK, PATTY    |1          |
+|PROFESSOR GIBBON/   |1          |
+|BLOWTORCH/          |1          |
+|SNOW QUEEN/GITTE    |1          |
+|STERLING, SID       |1          |
+|COVEY, LAWRENCE K.  |1          |
+|COOPER, TERI        |1          |
+|GARNOK REBBAHN      |1          |
+|PEACEMONGER/        |1          |
+|FIREFLY II          |1          |
++--------------------+-----------+
+only showing top 20 rows
+
+Hrdinové s algoritmicky zjištěným minimálním počtem propojení:
++--------------------+-----------+
+|name                |connections|
++--------------------+-----------+
+|NIMROD              |1          |
+|GOOM                |1          |
+|MARAUDER II         |1          |
+|SAJA                |1          |
+|HOUSTON, LT. COMMAND|1          |
+|FIREBOLT            |1          |
+|SPARROW BEAR, MELLIS|1          |
+|MOTH/               |1          |
+|SLAYER/             |1          |
+|MASTER OF VENGEANCE |1          |
+|KURLYCHEK, PATTY    |1          |
+|PROFESSOR GIBBON/   |1          |
+|BLOWTORCH/          |1          |
+|SNOW QUEEN/GITTE    |1          |
+|STERLING, SID       |1          |
+|COVEY, LAWRENCE K.  |1          |
+|COOPER, TERI        |1          |
+|GARNOK REBBAHN      |1          |
+|PEACEMONGER/        |1          |
+|FIREFLY II          |1          |
 +--------------------+-----------+
 only showing top 20 rows
