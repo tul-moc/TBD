@@ -1,0 +1,85 @@
+I have no name!@0dae78e39780:/files$ spark-submit spark-sql-cv.py
+24/11/06 15:41:28 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
++---+------------------+
+|age|   average_friends|
++---+------------------+
+| 18|           343.375|
+| 19|213.27272727272728|
+| 20|             165.0|
+| 21|           350.875|
+| 22|206.42857142857142|
+| 23|             246.3|
+| 24|             233.8|
+| 25|197.45454545454547|
+| 26|242.05882352941177|
+| 27|           228.125|
+| 28|             209.1|
+| 29|215.91666666666666|
+| 30| 235.8181818181818|
+| 31|            267.25|
+| 32| 207.9090909090909|
+| 33| 325.3333333333333|
+| 34|             245.5|
+| 35|           211.625|
+| 36|             246.6|
+| 37|249.33333333333334|
++---+------------------+
+only showing top 20 rows
+
+
+I have no name!@0dae78e39780:/files$ spark-submit total-spent-by-customer-dataframes.py
+24/11/06 16:12:19 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
++-----------+-----------+
+|customer_id|total_spent|
++-----------+-----------+
+|         68|    6375.45|
+|         73|     6206.2|
+|         39|    6193.11|
+|         54|    6065.39|
+|         71|    5995.66|
+|          2|    5994.59|
+|         97|    5977.19|
+|         46|    5963.11|
+|         42|    5696.84|
+|         59|    5642.89|
+|         41|    5637.62|
+|          0|    5524.95|
+|          8|    5517.24|
+|         85|    5503.43|
+|         61|    5497.48|
+|         32|    5496.05|
+|         58|    5437.73|
+|         63|    5415.15|
+|         15|    5413.51|
+|          6|    5397.88|
++-----------+-----------+
+only showing top 20 rows
+
+
+I have no name!@0dae78e39780:/files$ spark-submit most-obscure-superheroes.py
+24/11/06 16:52:08 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
++--------------------+-----------+
+|                name|connections|
++--------------------+-----------+
+| MASTER OF VENGEANCE|          1|
+|         STAR THIEF/|          1|
+|    KURLYCHEK, PATTY|          1|
+|              NIMROD|          1|
+|   PROFESSOR GIBBON/|          1|
+|                SAJA|          1|
+|          BLOWTORCH/|          1|
+|            FIREBOLT|          1|
+|    SNOW QUEEN/GITTE|          1|
+|               MOTH/|          1|
+|       STERLING, SID|          1|
+|          FIREFLY II|          1|
+|               HO TI|          1|
+|                GOOM|          1|
+|            D'SPRYTE|          1|
+|HOUSTON, LT. COMMAND|          1|
+|               SCOPE|          1|
+|             SLAYER/|          1|
+|   MARLOPOLIS, EDGAR|          1|
+|        COOPER, TERI|          1|
++--------------------+-----------+
+only showing top 20 rows
