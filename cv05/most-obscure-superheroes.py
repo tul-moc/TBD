@@ -20,9 +20,7 @@ hero_connections = names.join(connections, "id")
 
 heroes_with_one_connection = hero_connections.filter(func.col("connections") == 1).select("name", "connections")
 
-print("Hrdinové s jedním propojením (pokud považujeme 1 za minimum):")
 heroes_with_one_connection.show(truncate=False)
-
 
 # Bonus
 filtered_connections = connections.filter(func.col("connections") > 0)
@@ -30,7 +28,6 @@ filtered_connections = connections.filter(func.col("connections") > 0)
 min_connections = filtered_connections.agg(func.min("connections")).first()[0]
 most_obscure_heroes = hero_connections.filter(func.col("connections") == min_connections).select("name", "connections")
 
-print("Hrdinové s algoritmicky zjištěným minimálním počtem propojení:")
 most_obscure_heroes.show(truncate=False)
 
 spark.stop()
