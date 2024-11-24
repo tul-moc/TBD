@@ -1,0 +1,56 @@
+root@04b4a7658df7:/files# spark-submit spark-01.py
+24/11/24 21:49:45 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+    prediction  PriceOfUnitArea  difference
+0    24.880952             17.7    7.180952
+1    21.450000             18.3    3.150000
+2    25.541667             22.9    2.641667
+3    28.892857             23.5    5.392857
+4    25.541667             24.4    1.141667
+5    25.541667             24.7    0.841667
+6    28.892857             25.6    3.292857
+7    24.880952             25.9    1.019048
+8    30.758824             26.2    4.558824
+9    34.088889             26.5    7.588889
+10   25.541667             27.3    1.758333
+11   34.088889             28.8    5.288889
+12   25.541667             29.5    3.958333
+13   30.758824             30.1    0.658824
+14   39.100000             33.1    6.000000
+15   49.750000             33.6   16.150000
+16   39.100000             34.2    4.900000
+17   39.100000             34.2    4.900000
+18   39.100000             35.3    3.800000
+19   39.100000             35.5    3.600000
+20   39.100000             36.6    2.500000
+21   42.275000             36.7    5.575000
+22   30.758824             36.7    5.941176
+23   34.088889             37.4    3.311111
+24   42.315789             39.0    3.315789
+25   34.088889             40.1    6.011111
+26   53.614545             40.9   12.714545
+27   39.100000             41.4    2.300000
+28   43.233333             42.3    0.933333
+29   53.614545             42.8   10.814545
+30   21.450000             45.1   23.650000
+31   45.554545             46.0    0.445455
+32   42.315789             47.3    4.984211
+33   53.614545             53.7    0.085455
+34   45.554545             55.0    9.445455
+35   42.275000             57.1   14.825000
+36   49.750000             57.4    7.650000
+37   53.614545             58.1    4.485455
+38   53.614545             59.0    5.385455
+39   53.614545             63.3    9.685455
+Average Prediction Error: 5.547033899923606
+
+24/11/24 22:28:27 WARN MemoryStore: Failed to reserve initial memory threshold of 1024.0 KiB for computing block rdd_117_75 in memory.
+24/11/24 22:28:27 WARN MemoryStore: Not enough space to cache rdd_117_74 in memory! (computed 1024.6 KiB so far)
+24/11/24 22:28:27 WARN MemoryStore: Not enough space to cache rdd_117_75 in memory! (computed 384.0 B so far)
+24/11/24 22:28:27 WARN MemoryStore: Failed to reserve initial memory threshold of 1024.0 KiB for computing block rdd_117_77 in memory.
+24/11/24 22:28:27 WARN MemoryStore: Not enough space to cache rdd_117_77 in memory! (computed 384.0 B so far)
+24/11/24 22:28:27 WARN MemoryStore: Not enough space to cache rdd_117_70 in memory! (computed 13.7 MiB so far)
+24/11/24 22:28:27 WARN MemoryStore: Not enough space to cache rdd_117_76 in memory! (computed 1024.6 KiB so far)
+24/11/24 22:28:27 WARN MemoryStore: Not enough space to cache rdd_117_71 in memory! (computed 13.7 MiB so far)
+24/11/24 22:28:27 WARN MemoryStore: Not enough space to cache rdd_117_73 in memory! (computed 13.7 MiB so far)
+24/11/24 22:28:27 WARN MemoryStore: Not enough space to cache rdd_117_72 in memory! (computed 13.7 MiB so far)
+Logistic Regression Accuracy: 0.5614749989042639
