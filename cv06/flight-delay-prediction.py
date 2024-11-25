@@ -2,7 +2,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, when
 from pyspark.sql.types import DoubleType, IntegerType
 from pyspark.ml import Pipeline
-from pyspark.ml.feature import StringIndexer, VectorAssembler
+from pyspark.ml.feature import StringIndexer, VectorAssembler, OneHotEncoder
 from pyspark.ml.classification import LogisticRegression, GBTClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
@@ -34,51 +34,45 @@ df_2006 = spark.read.option("header", "true").option("inferSchema", "true").csv(
 df_2007 = spark.read.option("header", "true").option("inferSchema", "true").csv("/files/2007.csv")
 df_2008 = spark.read.option("header", "true").option("inferSchema", "true").csv("/files/2008.csv")
 
-df = df_2006.union(df_2007).union(df_2008)
+df = df_2006.union(df_2007).union(df_2008).repartition(10)
 
 df = df.select(main_columns + ["Cancelled", "ArrDelay"])
 df = df.filter((col("Cancelled") == 0) & (col("ArrDelay").isNotNull()))
 df = df.withColumn("label", when(col("ArrDelay") > 0, 1).otherwise(0))
-df = df.withColumn("CRSElapsedTime", col("CRSElapsedTime").cast(IntegerType()))
+df = df.withColumn("CRSElapsedTime", col("CRSElapsedTime")).cast(IntegerType())
 
-stages = []
-stages.append(StringIndexer(inputCol="UniqueCarrier", outputCol="UniqueCarrier_index", handleInvalid="skip").fit(df))
-stages.append(StringIndexer(inputCol="Origin", outputCol="Origin_index", handleInvalid="skip").fit(df))
-stages.append(StringIndexer(inputCol="Dest", outputCol="Dest_index", handleInvalid="skip").fit(df))
+unique_carrier_index = StringIndexer(inputCol="UniqueCarrier", outputCol="UniqueCarrierIndex", handleInvalid="skip").fit(df)
+origin_index = StringIndexer(inputCol="Origin", outputCol="OriginIndex", handleInvalid="skip").fit(df)
+dest_index = StringIndexer(inputCol="Dest", outputCol="DestIndex", handleInvalid="skip").fit(df)
 
-pipeline = Pipeline(stages=stages)
-df = pipeline.fit(df).transform(df)
-df = df.repartition(100)
+unique_carrier_vec = OneHotEncoder(inputCol="UniqueCarrierIndex", outputCol="UniqueCarrierVec")
+origin_vec = OneHotEncoder(inputCol="OriginIndex", outputCol="OriginVec")
+dest_vec = OneHotEncoder(inputCol="DestIndex", outputCol="DestVec")
 
 assembler_columns = []
 for col in main_columns:
     if col in columns_to_index:
-        assembler_columns.append(f"{col}_index")
+        assembler_columns.append(f"{col}Vec")
     else:
         assembler_columns.append(col)
 
-assembler = VectorAssembler(
-    inputCols=assembler_columns,
-    outputCol="features",
-    handleInvalid="skip",
-)
+assembler = VectorAssembler(inputCols=assembler_columns, outputCol="features", handleInvalid="skip")
 
-df = assembler.transform(df)
+log_reg = LogisticRegression(featuresCol="features", labelCol="label")
+
+pipeline = Pipeline(stages=[unique_carrier_index, origin_index, dest_index, unique_carrier_vec, origin_vec, dest_vec, assembler, log_reg])
+
 train_data, test_data = df.randomSplit([0.9, 0.1], seed=42)
 
-logistic_regression = LogisticRegression(featuresCol="features", labelCol="label")
-logistic_regression_model = logistic_regression.fit(train_data)
-predictions = logistic_regression_model.transform(test_data)
+pipeline_model =  pipeline.fit(train_data)
 
-evaluator = MulticlassClassificationEvaluator(
-    labelCol="label", predictionCol="prediction", metricName="accuracy"
-)
+predictions = pipeline_model.transform(test_data)
+
+evaluator = MulticlassClassificationEvaluator(labelCol="label", predictionCol="prediction", metricName="accuracy")
 
 accuracy = evaluator.evaluate(predictions)
 print(f"Logistic Regression Accuracy: {accuracy}")
 
-# Použítí Gradient Boosted Trees, který je výpočetně náročnější, ale používá gradientní booting, 
-# což znamená, že se učí z chyb minulých modelů a zlepšuje se. Dá se mu určit počet iterací (stromů)
 if accuracy < 0.55:
     gbt_classifier = GBTClassifier(featuresCol="features", labelCol="label", maxIter=50)
     gbt_classifier_model = gbt_classifier.fit(train_data)

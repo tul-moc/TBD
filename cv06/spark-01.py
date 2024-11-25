@@ -15,7 +15,7 @@ assembler = VectorAssembler(
 
 df = assembler.transform(realestate).select("PriceOfUnitArea", "Features")
 
-train_data, test_data = df.randomSplit([0.9, 0.1], seed=1234)
+train_data, test_data = df.randomSplit([0.9, 0.1], seed=42)
 
 dtr = DecisionTreeRegressor(labelCol="PriceOfUnitArea", featuresCol="Features")
 
@@ -28,8 +28,5 @@ predictions_pd = predictions.select("prediction", "PriceOfUnitArea").toPandas()
 predictions_pd["difference"] = np.abs(predictions_pd["prediction"] - predictions_pd["PriceOfUnitArea"])
 
 print(predictions_pd)
-
-average_difference = predictions_pd["difference"].mean()
-print(f"Average Prediction Error: {average_difference}")
 
 spark.stop()
