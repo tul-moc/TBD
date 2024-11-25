@@ -37,11 +37,8 @@ df_2008 = spark.read.option("header", "true").option("inferSchema", "true").csv(
 df = df_2006.union(df_2007).union(df_2008)
 
 df = df.select(main_columns + ["Cancelled", "ArrDelay"])
-
 df = df.filter((col("Cancelled") == 0) & (col("ArrDelay").isNotNull()))
-
-df = df.withColumn("label", when(col("ArrDelay") > 0, 1).otherwise(0).cast(DoubleType()))
-
+df = df.withColumn("label", when(col("ArrDelay") > 0, 1).otherwise(0))
 df = df.withColumn("CRSElapsedTime", col("CRSElapsedTime").cast(IntegerType()))
 
 stages = []
@@ -50,11 +47,8 @@ stages.append(StringIndexer(inputCol="Origin", outputCol="Origin_index", handleI
 stages.append(StringIndexer(inputCol="Dest", outputCol="Dest_index", handleInvalid="skip").fit(df))
 
 pipeline = Pipeline(stages=stages)
-
 df = pipeline.fit(df).transform(df)
-
 df = df.repartition(100)
-
 
 assembler_columns = []
 for col in main_columns:
