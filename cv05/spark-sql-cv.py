@@ -2,7 +2,6 @@ from pyspark.sql import SparkSession
 
 spark = SparkSession.builder.master("local").appName("SparkSQL").getOrCreate()
 
-
 people = spark.read.option("header", "true").option("inferSchema", "true").csv("/files/fakefriends-header.csv")
 
 people.createOrReplaceTempView("people")

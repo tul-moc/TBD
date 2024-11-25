@@ -6,30 +6,6 @@ from pyspark.ml.feature import StringIndexer, VectorAssembler
 from pyspark.ml.classification import LogisticRegression, GBTClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
-
-def get_vector_assembler_columns(columns, columns_to_index):
-    assembler_col = []
-    for col in columns:
-        if col in columns_to_index:
-            assembler_col.append(f"{col}_index")
-        else:
-            assembler_col.append(col)
-    return assembler_col
-
-def get_string_indexer_columns(columns_to_index):
-    stages = []
-    for column in columns_to_index:
-        indexer = StringIndexer(
-            inputCol=column,
-            outputCol=f"{column}_index",
-            handleInvalid="skip"
-        ).fit(df)
-        stages.append(indexer)
-    return stages
-
-
-
-
 spark = (
     SparkSession.builder.appName("FlightDelayPrediction")
     .config("spark.executor.memory", "8g")
@@ -68,7 +44,10 @@ df = df.withColumn("label", when(col("ArrDelay") > 0, 1).otherwise(0).cast(Doubl
 
 df = df.withColumn("CRSElapsedTime", col("CRSElapsedTime").cast(IntegerType()))
 
-stages = get_string_indexer_columns(columns_to_index)
+stages = []
+stages.append(StringIndexer(inputCol="UniqueCarrier", outputCol="UniqueCarrier_index", handleInvalid="skip").fit(df))
+stages.append(StringIndexer(inputCol="Origin", outputCol="Origin_index", handleInvalid="skip").fit(df))
+stages.append(StringIndexer(inputCol="Dest", outputCol="Dest_index", handleInvalid="skip").fit(df))
 
 pipeline = Pipeline(stages=stages)
 
@@ -76,8 +55,16 @@ df = pipeline.fit(df).transform(df)
 
 df = df.repartition(100)
 
+
+assembler_columns = []
+for col in main_columns:
+    if col in columns_to_index:
+        assembler_columns.append(f"{col}_index")
+    else:
+        assembler_columns.append(col)
+
 assembler = VectorAssembler(
-    inputCols=get_vector_assembler_columns(main_columns, columns_to_index),
+    inputCols=assembler_columns,
     outputCol="features",
     handleInvalid="skip",
 )
