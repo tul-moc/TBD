@@ -1,0 +1,76 @@
+root@3ceca13514c2:/files# python letter-count.py --input /files/book.txt
+(a,5251)
+(b,2115)
+(c,2199)
+(d,1349)
+(e,1349)
+(f,1659)
+(g,821)
+(h,1235)
+(i,3519)
+(j,257)
+(k,194)
+(l,1260)
+(m,1955)
+(n,1026)
+(o,2944)
+(p,1923)
+(q,113)
+(r,1236)
+(s,3197)
+(t,6857)
+(u,551)
+(v,333)
+(w,2498)
+(x,5)
+(y,3507)
+(z,11)
+
+
+root@3ceca13514c2:/files# python letter-count-stream.py --input /files/out
+(a,1)
+(j,1)
+(s,1)
+(a,2)
+(a,3)
+(a,4)
+(j,2)
+(s,2)
+(t,1)
+(c,1)
+(o,1)
+(t,2)
+(o,2)
+(t,3)
+(o,3)
+(t,4)
+(o,4)
+(t,5)
+(o,5)
+
+2024-12-01 23:20:57,120 INFO  /files/letter-count-with-articles.py:13                      [] - a: 2505277
+2024-12-01 23:21:55,445 INFO  /files/letter-count-with-articles.py:13                      [] - b: 1313469
+2024-12-01 23:22:34,740 INFO  /files/letter-count-with-articles.py:13                      [] - c: 891835
+2024-12-01 23:23:38,094 INFO  /files/letter-count-with-articles.py:13                      [] - d: 1483434
+2024-12-01 23:23:48,728 INFO  /files/letter-count-with-articles.py:13                      [] - e: 245393
+2024-12-01 23:24:03,505 INFO  /files/letter-count-with-articles.py:13                      [] - f: 341358
+2024-12-01 23:24:09,198 INFO  /files/letter-count-with-articles.py:13                      [] - g: 135697
+2024-12-01 23:24:32,662 INFO  /files/letter-count-with-articles.py:13                      [] - h: 546434
+2024-12-01 23:25:02,270 INFO  /files/letter-count-with-articles.py:13                      [] - i: 680811
+2024-12-01 23:26:39,364 INFO  /files/letter-count-with-articles.py:13                      [] - j: 2256057
+2024-12-01 23:27:41,323 INFO  /files/letter-count-with-articles.py:13                      [] - k: 1419114
+2024-12-01 23:28:06,388 INFO  /files/letter-count-with-articles.py:13                      [] - l: 578122
+2024-12-01 23:28:52,567 INFO  /files/letter-count-with-articles.py:13                      [] - m: 1081697
+2024-12-01 23:31:25,721 INFO  /files/letter-count-with-articles.py:13                      [] - n: 3547398
+2024-12-01 23:32:21,190 INFO  /files/letter-count-with-articles.py:13                      [] - o: 1292033
+2024-12-01 23:34:07,908 INFO  /files/letter-count-with-articles.py:13                      [] - p: 2565085
+2024-12-01 23:34:08,231 INFO  /files/letter-count-with-articles.py:13                      [] - q: 6222
+2024-12-01 23:34:54,761 INFO  /files/letter-count-with-articles.py:13                      [] - r: 1111806
+2024-12-01 23:37:22,908 INFO  /files/letter-count-with-articles.py:13                      [] - s: 3540130
+2024-12-01 23:38:49,488 INFO  /files/letter-count-with-articles.py:13                      [] - t: 2007260
+2024-12-01 23:39:06,467 INFO  /files/letter-count-with-articles.py:13                      [] - u: 395507
+2024-12-01 23:40:50,239 INFO  /files/letter-count-with-articles.py:13                      [] - v: 2435314
+2024-12-01 23:40:53,990 INFO  /files/letter-count-with-articles.py:13                      [] - w: 87105
+2024-12-01 23:40:54,545 INFO  /files/letter-count-with-articles.py:13                      [] - x: 11564
+2024-12-01 23:40:55,344 INFO  /files/letter-count-with-articles.py:13                      [] - y: 16314
+2024-12-01 23:41:50,604 INFO  /files/letter-count-with-articles.py:13                      [] - z: 1294278
