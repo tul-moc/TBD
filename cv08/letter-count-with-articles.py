@@ -13,12 +13,8 @@ def log(letter_counts):
     logging.info(f"{letter}: {count}")
 
 def extract_words_and_validate(input):
-    validatedWords = re.findall(r"\b[a-zA-Z]+\b", input.lower())
-    words = []
-    for word in validatedWords:
-        if word.isalpha():
-            words.append((word[0], 1))
-    return words
+    validatedWords = re.findall(r"\b[\wá-ž]+\b", input.lower(), re.UNICODE)
+    return [(word[0], 1) for word in validatedWords]
 
 def get_letter_counts(ds):
     letter_counts = (
