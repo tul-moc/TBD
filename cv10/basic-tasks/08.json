@@ -1,0 +1,16 @@
+﻿[
+  {
+    "keanu": {
+      "identity": 1,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "sex": "male",
+        "born": 1964,
+        "name": "Keanu Reeves"
+      },
+      "elementId": "4:60916a70-515b-4e0b-aea3-39868ff4ecf8:1"
+    }
+  }
+]

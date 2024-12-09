@@ -1,0 +1,108 @@
+1: Vypiště 10 libovoných uzlů:
+
+MATCH(anything) RETURN (anything) LMIT 10
+
+
+###############################################
+2: Vypiště 10 libovoných filmů
+
+MATCH (anyone:Movie) RETURN (anyone) LIMIT 10
+
+
+###############################################
+3: Vypiště herce, kteří hráli ve filmu TheMatrix, seřaďte je podle jména 
+
+MATCH (actor:Person)-[:ACTED_IN]-(movie:Movie{title: 'The Matrix'})
+RETURN actor.name 
+ORDER BY actor.name ASC
+
+
+###############################################
+4: Vypiště filmy, ve kterých hrál Keanu Reeves
+
+MATCH (actor:Person{name: 'Keanu Reeves'})-[:ACTED_IN]-(movie:Movie) 
+RETURN movie.title
+
+
+###############################################
+5: Vypiště počet filmů, ve kterých hrál Keanu Reeves
+
+MATCH (actor:Person{name: 'Keanu Reeves'})-[:ACTED_IN]-(movie:Movie) 
+RETURN COUNT(movie) AS MovieCount
+
+
+###############################################
+6: Vypiště filmy, ve kterých hrál Keanu Reeves a Carrie-Anne Moss
+
+MATCH (keanu:Person{name: 'Keanu Reeves'})-[:ACTED_IN]-(movie:Movie)
+WITH movie
+MATCH (carrie:Person{name: 'Carrie-Anne Moss'})-[:ACTED_IN]-(movie)
+return movie.title
+
+
+###############################################
+7: Přidejte nový film "John Wick", ve kterém bude hrát Keanu Reeves
+
+CREATE (JohnWick:Movie {title:'John Wick', released:2014, tagline:'John Wick isn\'t the Boogeyman... He\'s the guy you send to kill the f*cking Boogeyman.'})
+WITH JohnWick
+MATCH (keanu:Person{name: 'Keanu Reeves'})
+CREATE (keanu)-[:ACTED_IN {earnings: 22000000, roles:['John Wick']}]->(JohnWick)
+
+Added 1 label, created 1 node, set 5 properties, created 1 relationship, completed after 11 ms.
+
+
+###############################################
+8: Upravte herce Keanu Reeves, přidejte libovolnou vlastnost
+
+MATCH (keanu:Person{name: 'Keanu Reeves'})
+SET keanu.sex = 'male'
+RETURN keanu
+
+
+###############################################
+################### BONUS #####################
+###############################################
+1: Vypiště průměrný výdělek herců
+
+MATCH (person:Person)-[actor:ACTED_IN]->(movie:Movie)
+RETURN AVG(actor.earnings) AS AverageEarnings
+
+20384833.05780347
+
+
+###############################################
+2: Nalezněte všechny kontakty Toma Hankse, které se narodily v roce 1960 nebo později a vydělali alespoň $10M za film
+   Vraťte jméno kontaktu, datum narození a výdělek
+   Výsledky seřaďtě od nejlépe placeného
+
+MATCH (person:Person)-[:HAS_CONTACT]->(TomH:Person {name:'Tom Hanks', born:1956})
+WHERE person.born >= 1960
+WITH person
+MATCH (person)-[actor:ACTED_IN]->(movie:Movie)
+WHERE actor.earnings >=10000000
+RETURN person.name, person.born, MAX(actor.earnings) as MaxEarnings
+ORDER BY MaxEarnings DESC
+
+
+###############################################
+3: Přidejte hercům, kteří celkově vydělali více než $50M, label Rich
+
+MATCH (person:Person)-[actor:ACTED_IN]->(movie:Movie)
+WITH person, SUM(actor.earnings) AS TotalEarning
+WHERE TotalEarning > 50000000
+SET person:Rich
+RETURN person.name, TotalEarning
+
+
+###############################################
+4: Vytvořte dotaz, který proběhne pokaždé, když Keanu Reeves zhlédne Top Gun
+   Dotaz zajišťuje vytvoření vztahu VIEWED mezi Keanu Reeves a Top Gun (pokud existuje)
+   a počíta počet zhlédnutí (inkrementuje 0 1)
+
+MATCH (keanu:Person {name: 'Keanu Reeves'}), (topGun:Movie {title: 'Top Gun'})
+MERGE (keanu)-[viewed:Viewed]->(topGun)
+ON CREATE SET viewed.count = 1
+ON MATCH SET viewed.count = viewed.count + 1
+RETURN keanu.name, topGun.title, viewed.count
+
+"Keanu Reeves"	"Top Gun"	4

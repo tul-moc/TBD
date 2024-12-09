@@ -1,0 +1,134 @@
+﻿[
+  {
+    "anything": {
+      "identity": 0,
+      "labels": [
+        "Movie"
+      ],
+      "properties": {
+        "tagline": "Welcome to the Real World",
+        "title": "The Matrix",
+        "released": 1999
+      },
+      "elementId": "4:60916a70-515b-4e0b-aea3-39868ff4ecf8:0"
+    }
+  },
+  {
+    "anything": {
+      "identity": 1,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "born": 1964,
+        "name": "Keanu Reeves"
+      },
+      "elementId": "4:60916a70-515b-4e0b-aea3-39868ff4ecf8:1"
+    }
+  },
+  {
+    "anything": {
+      "identity": 2,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "born": 1967,
+        "name": "Carrie-Anne Moss"
+      },
+      "elementId": "4:60916a70-515b-4e0b-aea3-39868ff4ecf8:2"
+    }
+  },
+  {
+    "anything": {
+      "identity": 3,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "born": 1961,
+        "name": "Laurence Fishburne"
+      },
+      "elementId": "4:60916a70-515b-4e0b-aea3-39868ff4ecf8:3"
+    }
+  },
+  {
+    "anything": {
+      "identity": 4,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "born": 1960,
+        "name": "Hugo Weaving"
+      },
+      "elementId": "4:60916a70-515b-4e0b-aea3-39868ff4ecf8:4"
+    }
+  },
+  {
+    "anything": {
+      "identity": 5,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "born": 1967,
+        "name": "Andy Wachowski"
+      },
+      "elementId": "4:60916a70-515b-4e0b-aea3-39868ff4ecf8:5"
+    }
+  },
+  {
+    "anything": {
+      "identity": 6,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "born": 1965,
+        "name": "Lana Wachowski"
+      },
+      "elementId": "4:60916a70-515b-4e0b-aea3-39868ff4ecf8:6"
+    }
+  },
+  {
+    "anything": {
+      "identity": 7,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "born": 1952,
+        "name": "Joel Silver"
+      },
+      "elementId": "4:60916a70-515b-4e0b-aea3-39868ff4ecf8:7"
+    }
+  },
+  {
+    "anything": {
+      "identity": 8,
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "born": 1978,
+        "name": "Emil Eifrem"
+      },
+      "elementId": "4:60916a70-515b-4e0b-aea3-39868ff4ecf8:8"
+    }
+  },
+  {
+    "anything": {
+      "identity": 9,
+      "labels": [
+        "Movie"
+      ],
+      "properties": {
+        "tagline": "Free your mind",
+        "title": "The Matrix Reloaded",
+        "released": 2003
+      },
+      "elementId": "4:60916a70-515b-4e0b-aea3-39868ff4ecf8:9"
+    }
+  }
+]
