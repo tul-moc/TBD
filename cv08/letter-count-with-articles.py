@@ -8,10 +8,6 @@ from pyflink.datastream import StreamExecutionEnvironment, RuntimeExecutionMode
 from pyflink.datastream.connectors import (FileSource, StreamFormat, FileSink, OutputFileConfig,
                                            RollingPolicy)
 
-def log(letter_counts):
-    letter, count = letter_counts
-    logging.info(f"{letter}: {count}")
-
 def extract_words_and_validate(input):
     validatedWords = re.findall(r"\b[\wá-ž]+\b", input.lower(), re.UNICODE)
     return [(word[0], 1) for word in validatedWords]
@@ -68,7 +64,7 @@ def count_words_by_starting_letter(input_path, output_path):
         print("Printing result to stdout. Use --output to specify output path.")
         ds.print()
 
-    letter_counts.map(lambda x: log(x))
+    letter_counts.map(lambda x: logging.info(f"{x[0]}: {x[1]}"))
     env.execute()
 
 if __name__ == '__main__':

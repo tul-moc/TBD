@@ -10,7 +10,7 @@ services:
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager  
     volumes:
-      - "/mnt/c/Users/StepanMoc/Desktop/VSCode/TBD/cv09:/files:rw"
+      - "/mnt/c/Users/StepanMoc/Desktop/VSCode/TBD/cv09/table-api:/files:rw"
 
   taskmanager:
     image: pyflink:latest
@@ -25,4 +25,4 @@ services:
         jobmanager.rpc.address: jobmanager
         taskmanager.numberOfTaskSlots: 2 
     volumes:
-      - "/mnt/c/Users/StepanMoc/Desktop/VSCode/TBD/cv09:/files:rw"
+      - "/mnt/c/Users/StepanMoc/Desktop/VSCode/TBD/cv09/table-api:/files:rw"
