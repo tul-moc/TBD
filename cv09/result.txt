@@ -1,0 +1,11 @@
+root@367a7a2f62b8:/files# python most-hyped-movies.py
++I[50, Star Wars (1977), 325, 4.0]
++I[100, Fargo (1996), 227, 4.0]
++I[127, Godfather, The (1972), 214, 4.0]
++I[174, Raiders of the Lost Ark (1981), 202, 4.0]
++I[56, Pulp Fiction (1994), 188, 4.0]
++I[318, Schindler's List (1993), 186, 4.0]
++I[98, Silence of the Lambs, The (1991), 181, 4.0]
++I[313, Titanic (1997), 179, 4.0]
++I[172, Empire Strikes Back, The (1980), 172, 4.0]
++I[181, Return of the Jedi (1983), 171, 4.0]
